@@ -1,0 +1,43 @@
+<!insertion du header depuis la page en php >
+<!--et urilisation de la page oeuvres.php pour son tableau-->
+
+        <?php require_once(__DIR__ . '/header.php'); ?>
+        <?php require_once(__DIR__ .'/oeuvres.php'); ?>
+        
+<!--condition pour aller chercher la valeur de l'id de chaque tableau-->
+
+        <?php
+            $id = $_GET['id'] ?? null;
+            $oeuvre = null;
+
+            if ($id !== null) {
+                foreach ($oeuvres as $oeuvre) {
+                    if ($oeuvre['id'] == $id) {
+                    break;
+                    }
+                }
+            }
+        ?>
+
+        <!affichage du tableau>
+    <main>
+        <article id="detail-oeuvre">
+        <?php if ($oeuvre): ?>
+            <div id="img-oeuvre">        
+                <img src="<?php echo $oeuvre['image']; ?>" alt="<?php echo $oeuvre['title']; ?>">
+            </div>
+            <div id="contenu-oeuvre">
+                <h1><?php echo $oeuvre['title']; ?></h1>
+                <p class="description"><?php echo $oeuvre['author']; ?></p>
+                <p class="description-complete"><?php echo $oeuvre['description']; ?></p>
+            </div>
+            <?php else: ?>
+            <p>Œuvre non trouvée.</p>
+        <?php endif; ?>
+        </article>
+    </main>
+
+   <!--insertion du footer depuis la page en php-->
+
+        <?php require_once(__DIR__ . '/footer.php'); ?>
+    
