@@ -2,7 +2,9 @@
 <!--et urilisation de la page oeuvres.php pour son tableau-->
 
         <?php require_once(__DIR__ . '/header.php'); ?>
-        <?php require_once(__DIR__ .'/oeuvres.php'); ?>
+        <?php require_once "bdd.php";
+
+?>
         
 <!--condition pour aller chercher la valeur de l'id de chaque tableau-->
 
@@ -11,12 +13,11 @@
             $oeuvre = null;
 
             if ($id !== null) {
-                foreach ($oeuvres as $oeuvre) {
-                    if ($oeuvre['id'] == $id) {
-                    break;
-                    }
-                }
-            }
+    // requête préparée pour éviter les injections SQL
+    $stmt = $pdo->prepare("SELECT * FROM oeuvres WHERE Id = ?");
+    $stmt->execute([$id]);
+    $oeuvre = $stmt->fetch(PDO::FETCH_ASSOC);
+}
         ?>
 
         <!affichage du tableau>
