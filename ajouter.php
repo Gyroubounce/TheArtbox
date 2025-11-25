@@ -2,12 +2,12 @@
 
 <form action="traitement.php" method="POST">
     <div class="champ-formulaire">
-        <label for="titre">Titre de l'œuvre</label>
-        <input type="text" name="titre" id="titre">
+        <label for="title">Titre de l'œuvre</label>
+        <input type="text" name="title" id="title">
     </div>
     <div class="champ-formulaire">
-        <label for="artiste">Auteur de l'œuvre</label>
-        <input type="text" name="artiste" id="artiste">
+        <label for="author">Auteur de l'œuvre</label>
+        <input type="text" name="author" id="author">
     </div>
     <div class="champ-formulaire">
         <label for="image">URL de l'image</label>

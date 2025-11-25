@@ -1,4 +1,4 @@
-<!insertion du header depuis la page en php >
+
 <!--et urilisation de la page oeuvres.php pour son tableau-->
 
         <?php require_once(__DIR__ . '/header.php'); ?>
@@ -14,13 +14,14 @@
 
             if ($id !== null) {
     // requête préparée pour éviter les injections SQL
+    $pdo = getPDOConnection();
     $stmt = $pdo->prepare("SELECT * FROM oeuvres WHERE Id = ?");
     $stmt->execute([$id]);
     $oeuvre = $stmt->fetch(PDO::FETCH_ASSOC);
 }
         ?>
 
-        <!affichage du tableau>
+       
     <main>
         <article id="detail-oeuvre">
         <?php if ($oeuvre): ?>
